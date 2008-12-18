@@ -1,0 +1,5 @@
+<% user_id = 0 %>
+<% user_id = current_user.id unless current_user.nil? %>
+
+<%= image_tag("/graphs/" << user_id.to_s << "_" << "despesa.png") %><br/>
+<%= image_tag("/graphs/" << user_id.to_s << "_" << "receita.png") %>

@@ -1,0 +1,88 @@
+
+<!-- 
+    This is the partial rendering the main_tabnav.rb file
+    here you have a sample css style to
+    be sure to move it to your .css stylesheet 
+-->
+
+<style type="text/css">
+#main_tabnav {
+	color: #000;
+	margin: 0px;
+	padding-top: 10px;
+	z-index: 1;
+	padding-left: 10px;
+	background-color: #003163; 
+}
+
+#main_tabnav li {
+	display: inline;
+	overflow: hidden;
+	list-style-type: none; 
+}
+
+#main_tabnav a, a.active {
+	color: white;
+	background: #174A84;
+	font: bold 10pt "Trebuchet MS", Arial, sans-serif;
+	padding: 2px 5px 0px 5px;
+	margin: 0;
+	text-decoration: none; 
+}
+
+#main_tabnav a.active {
+	color: #12A225;
+	background: #FFFFFF; 
+}
+
+#main_tabnav a:hover {
+	color: #12A225;
+	background: #FFFFFF;
+}
+
+#msain_tabnav a.active:hover {
+	background: #FFB000;
+	color: #FFFFFF; 
+}
+
+#main_content {
+	z-index: 2;	
+}
+
+</style>
+
+<!-- end stylesheet -->
+
+<ul id="main_tabnav"> <% 
+  tabs.each do |t|      
+    tab = t.clone # I need this in order to avoid binding sharing issues 
+    tab.page=self
+        
+    html_opts = {}
+    html_opts[:class] = 'active' if tab.highlighted?(params)
+    html_opts[:title] = tab.title if tab.title
+    #html_opts[:id] = 'tab_' << tab.link[:controller]
+    html_opts[:name] = 'tab_nav'
+    html_opts[:onclick] = 'activate(this)'
+    
+    if tab.visible? -%>
+
+      <li><%= link_to_remote tab.name, { :update => 'contents', 
+                :url => {:controller => tab.link[:controller], :action => tab.link[:action]}}, html_opts -%></li>
+
+    <% 
+    end 
+  end -%>
+</ul>
+
+<script language="JavaScript">
+    function activate(element) {
+        var tabs = document.getElementsByName("tab_nav");
+
+        for (i = 0; i < tabs.length; i++) {
+            tabs[i].className = "";
+        }
+
+        element.className = "active";
+    }
+</script>

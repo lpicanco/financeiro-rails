@@ -1,0 +1,36 @@
+<fieldset>
+  <div class="row">
+    <div class="form-element">
+      <label for="receita_descricao">Descrição</label>
+      <%= text_field 'receita', 'descricao'%>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-element">
+      <label for="receita_category_id">Categoria</label>
+      <%= text_field_tag 'tag_list', @receita.tags.collect{|t| t.name}.join(" ") %>
+      <%# categories = Category.find(:all, :conditions => [ "user_id = ?", get_user_id]).collect {|p| [ p.name, p.id ]} %>
+      <%#= select("receita", "category_id", categories, { :include_blank => false }) %>
+    </div>
+
+    <div class="form-element">
+      <label for="receita_valor">Valor</label>
+      <%= text_field 'receita', 'valor'%>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-element">
+      <label for="receita_account_id">Conta</label>
+      <% accounts = Account.find(:all, :conditions => [ "user_id = ?", get_user_id]).collect {|p| [ p.name, p.id ]} %>
+      <%= select("receita", "account_id", accounts, { :include_blank => true }) %>
+    </div>
+        
+    <div class="form-element">
+      <label for="receita_data">Data</label>
+      <%= date_select 'receita', 'data', :order => [:day, :month, :year] %>
+    </div>
+  </div>
+
+</fieldset>

@@ -1,0 +1,33 @@
+<fieldset>
+	<div class="row">
+		<!--[form:entry]-->
+
+        <div class="form-element">
+          <label for="entry_type_id">Tipo</label>
+          <%= select 'entry', 'type_id' , @types.collect {|p| [ p.name, p.id ] } %>
+        </div>
+
+        <div class="form-element">
+          <label for="entry_description">Descrição</label>
+          <%= text_field 'entry', 'description' , {:class=>"text-input"} %>
+        </div>
+        
+        <div class="form-element">
+          <label for="entry_category_id">Categoria</label>
+          <%= select 'entry', 'category_id' , @categories.collect {|p| [ p.name, p.id ] } %>
+        </div>
+        
+        <div class="form-element">
+          <label for="entry_value">Valor</label>
+          <%= text_field 'entry', 'value' , {:class=>"text-input"} %>
+        </div>
+        
+        <div class="form-element">
+          <label for="entry_date">Date</label>
+          <%= datetime_select 'entry', 'date'  %>
+        </div>
+
+<!--[eoform:entry]-->
+
+	</div>
+</fieldset>

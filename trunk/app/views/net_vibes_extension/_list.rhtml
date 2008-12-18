@@ -1,0 +1,28 @@
+ <table class="center border large">
+	<thead>
+		<tr>
+			<th>Datas</th>
+			<th>Descrição</th>
+			<th>Conta</th>
+			<th>Valor</th>
+		</tr>
+	</thead>
+	<tbody>
+	   <% saldo = 0%>
+	   <% for trans in @transactions %>
+	   <% saldo += trans.formated_value %>
+		<tr>
+			<td><%= trans.data %></td>
+			<td><%= trans.descricao %></td>
+			<td><%= trans.account.name unless trans.account.nil?%>&nbsp;</td>
+			<td nowrap="nowrap">R$ <%= trans.formated_value.formated %></td>
+		</tr>
+	   <% end %>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="4" align="right">R$ <%= saldo %></td>
+		</tr>
+	</tfoot>
+</table>
+<%= link_to "Financeiro", url_for (:only_path => false, :controller => 'main', :action => 'index') %>

@@ -1,0 +1,2 @@
+#page.replace_html 'report', :partial => 'show_graphics'
+page.insert_html :top, 'filter', 'teste'

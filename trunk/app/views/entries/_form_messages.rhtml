@@ -1,0 +1,5 @@
+<%= render :partial => 'messages' %>
+
+<% unless @entry.nil? %>
+<%= error_messages_for 'entry' %>
+<% end %>
