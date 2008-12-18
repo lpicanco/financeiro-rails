@@ -1,0 +1,21 @@
+<div id="tag_cloud">
+    <div id="title">Categorias - Despesas</div>
+    <div id="menu_content">
+        <% tag_cloud @tag_despesas, %w(nube1 nube2 nube3 nube4 nube5) do |name, css_class| %>
+            <label class="<%=css_class%>"><%= name %></label>
+          <%#= link_to name, {:action => :tag, :id => name},
+            :class => css_class %>
+        <% end %>
+    </div>
+</div>
+
+<div id="tag_cloud">
+    <div id="title">Categorias - Receitas</div>
+    <div id="menu_content">
+        <% tag_cloud @tag_receitas, %w(nube1 nube2 nube3 nube4 nube5) do |name, css_class| %>
+            <label class="<%=css_class%>"><%= name %></label>
+          <%#= link_to name, {:action => :tag, :id => name},
+            :class => css_class %>
+        <% end %>
+    </div>
+</div>

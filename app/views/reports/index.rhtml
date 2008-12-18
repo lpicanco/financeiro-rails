@@ -1,0 +1,16 @@
+<div id="filter">
+    <% user = 0%>
+    <% user = current_user.id unless current_user.nil? %>
+    
+    <%= form_remote_tag(:update => 'report',
+        :url => {:action => 'show_graphics'}) %>
+       
+        Competência: <%= date_select 'despesa', 'data', :discard_day => true, 
+            :order => [:month, :year]%><br/>
+        
+        <%= submit_tag "Filtrar" %>
+    <%= end_form_tag %>  
+</div>
+
+<div id="report">
+</div>

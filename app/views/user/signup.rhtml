@@ -1,0 +1,19 @@
+<div id="filter">
+    <div title="<%= title_helper %>" class="form">
+      <h3>Se registrar</h3>
+    
+      <%= error_messages_for 'user' %>
+    
+      <div class="form-padding">
+        <%= start_form_tag :action => 'signup' %>
+          <%= render_partial 'edit', :user => @user, :submit => false %><br/>
+          <%= render_partial 'password', :submit => false %>
+    
+          <div class="button-bar">
+            <%= submit_tag 'Registrar' %>
+            <%= link_to 'Cancelar', :action => 'login' %>
+          </div>
+        <%= end_form_tag %>
+      </div>
+    </div>
+</div>

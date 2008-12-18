@@ -1,0 +1,19 @@
+<div id="top">Financeiro</div>
+
+<div id="top_menu">    
+    <% if current_user.nil? %>
+        <%= link_to "Entrar", 
+            {:controller => "user", :action => "login"}, 
+            :class => 'lbOns' %> <span id="separator">|</span> 
+        <%= link_to "Se registrar", 
+            {:controller => "user", :action => "signup" } %>    
+    <% else %>
+        <%= current_user.email %> <span id="separator">|</span> 
+        <%= link_to "Sair", 
+            {:controller => "user", :action => "logout" } %>    
+    <% end %>    
+</div>
+
+<div id="busy_indicator" style="display:none;">
+    <%=image_tag 'bar_2.gif' %>
+</div>

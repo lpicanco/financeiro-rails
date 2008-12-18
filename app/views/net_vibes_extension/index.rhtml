@@ -1,0 +1,30 @@
+<script type="text/javascript">
+var login = getValue("login");
+var password = getValue("password");
+
+var url = "<%= url_for (:only_path => false, :controller => 'net_vibes_extension', :action => 'list') %>";
+url += "?login=" + login + "&password=" + password;
+
+function AjaxShow(xhr)
+      {
+        document.getElementById("contents").innerHTML = xhr.responseText;
+      }
+      
+NV_ONLOAD = function() {
+    var request = new Ajax.Request(NV_XML_REQUEST_URL + '?url=' + escape(url), { method: 'get', onSuccess: AjaxShow });     
+}
+</script>
+
+<?php } ?>
+
+<form class="configuration" method="post" action="">
+
+  <label>Login :</label> <input name="login" type="text" value="" />
+  <br />
+
+  <label>Senha :</label> <input name="password" type="password" value="" />
+  
+  <input type="submit" value="ok" />
+</form>
+
+<div id="contents"></div>

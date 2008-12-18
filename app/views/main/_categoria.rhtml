@@ -1,0 +1,28 @@
+<div id="menu">
+    <div id="title">Categorias</div>
+    <div id="menu_content">
+        <table>
+        <% for categoria in @cat_receitas %>
+            <tr>
+                <td><%= categoria.name %>:</td> 
+                <td>
+                    <span id="saldo_pos">
+                        R$ <%= categoria.valor.formated %>
+                    </span>
+                </td>
+            </tr>
+        <% end %>
+
+        <% for categoria in @cat_despesas %>
+            <tr>
+                <td><%= categoria.name %>:</td> 
+                <td >
+                    <span id="saldo_neg">
+                        R$ -<%= categoria.valor.formated %>
+                    </span>
+                </td>
+            </tr>
+        <% end %>
+
+        </table>
+<div>

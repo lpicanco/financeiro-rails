@@ -1,0 +1,30 @@
+<div id="menu">
+    <div id="title">Saldos</div>
+    <div id="menu_content">
+        <table>
+        <% for account in @accounts %>
+            <% saldo = 0%>            
+            <% account.transactions.each do |t|
+                if t.tipo == "d"
+                    saldo -= t.valor
+                else
+                    saldo += t.valor
+                end
+               end
+            %>
+                      
+            <tr>
+                <td><%= account.name %>:</td> 
+                <td align="left">
+                    <% if saldo >=0 %>
+                        <span id="saldo_pos">
+                    <% else %>
+                        <span id="saldo_neg">
+                    <% end %>
+                    R$ <%= saldo.formated%></span>
+                </td>
+            </tr>
+        <% end %>
+        </table>
+    </div>
+</div>
